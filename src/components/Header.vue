@@ -30,12 +30,11 @@ nav {
   a{
     font-weight: bold;
     color: #2c3e50;
-    text-decoration: none;
   }
   #title{
     font-size:1.5em;
   }
-  .nav-list{
+  #nav-list{
     list-style-type: none;
     float:right;
     height:100%;
