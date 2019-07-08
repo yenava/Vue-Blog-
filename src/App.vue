@@ -1,30 +1,32 @@
 <template>
-  <div>
-    <Header/>
+  <div id="app">
+    <Header></Header>
     <router-view></router-view>
   </div>
-
 </template>
 
-
-
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
-import Header from '@/components/Header.vue'
-
-
+import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
 
 export default {
-  naem:"App",
-  components:{
-    HelloWorld,
+  name: 'app',
+  components: {
     Header,
+
   }
 }
 </script>
-<style >
+
+<style>
 *{
-  padding:0px;
-  margin:0px;
+  margin:0;
+  padding:0;
+}
+a{
+   text-decoration:none;
+ }
+body{
+  --themeColor:#teal;
 }
 </style>

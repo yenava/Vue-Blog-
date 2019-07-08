@@ -1,0 +1,45 @@
+npm install express-generator -g
+安装express生成器到全局
+安装nodemon到全局
+
+启动vue项目：vue serve
+或者用vue ui 启动
+
+为了实现自动化重启：在package.json的script中加入
+"scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+  },
+
+开启myblog服务器
+SET DEBUG=myblog:* & npm start
+用自动化脚本开启：会自动重启修改，不需要暂停项目后再重启
+SET DEBUG=myblog:* & npm run devstart
+
+配置服务器端：nginx
+systemctl start nginx  #启动
+
+
+systemctl stop nginx #停止
+
+
+systemctl restart nginx  #重启
+
+
+systemctl status nginx #查看运行状态
+
+
+systemctl enable nginx #开机启动
+
+
+nginx -v  #查看nginx版本号
+
+
+service nginx reload #重新加载配置文件
+
+
+vi  /etc/nginx/conf.d/default.conf  #打开配置文件
+
+forever持久化
+cd 你的项目路径
+forever start -a bin/www

@@ -1,51 +1,80 @@
 <template>
-  <div v-theme:column="'narrow'" id="show-blog">
-    <h2>文章总览</h2>
-    <input type="text" placeholder="搜索" v-model="search">
+<div>
+<div v-theme:column="'narrow'" id="show-blog">
     
-      <div class="single-blogs" v-for="(blog,index) in filteredBlogs" :key="index">
-        <router-link :to="{name:'singleblog',params:{id:blog.id}}">
-          <h3 v-rainbow>{{blog.title | toUpperCase}}</h3>
-          <article>{{blog.body | snippet}}</article>
+    <h2>文章总览</h2>
+    <el-row>
+      <el-col :span="22"><input type="text" placeholder="搜索" v-model="search"></el-col>
+    </el-row>
+      <el-card class="single-blogs" v-for="(blog,index) in filteredBlogs" :key="index">
+        <router-link :to="{name:'singleblog',params:{id:blog._id}}" tag="div">
+          <h2 >{{blog.articlename | toUpperCase}}</h2>
+          <div v-html="mContent(blog.content)"></div>
+          
         </router-link>
-      </div>
+        <el-tag
+          :key="tag"
+          v-for="tag in blog.classify">
+          {{tag}}
+          </el-tag>
+      </el-card>
   </div>
+</div>
+  
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import marked from 'marked'
+var rendererMD = new marked.Renderer()
+marked.setOptions({
+  renderer: rendererMD,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false
+})
 
 export default {
   name: 'home',
   data(){
     return{
       blogs:[],
-      search:''
+      search:'',
+      content:"",
     }
   },
+  //http://localhost:3000/articles/list
+  //https://jsonplaceholder.typicode.com/posts
   created(){
-    this.$http.get('https://jsonplaceholder.typicode.com/posts')
+    this.$http.get('http://localhost:3000/articles/list')
     .then(function(data){
       // console.log(data);
-      this.blogs = data.body.slice(0,10);
-      console.log(this.blogs)
+      console.log(data)
+      this.blogs = data.body.slice(0,20);
     })
   },
   computed:{
     filteredBlogs:function(){
       return this.blogs.filter((blog)=>{
-        return blog.title.match(this.search);
+        return blog.articlename.match(this.search);
       })
-    }
+    },
   },
   filters:{
     toUpperCase(value){
       return value.toUpperCase()
     }
   },
-  components: {
-    HelloWorld,
+  methods:{
+    mContent(val){
+      var valued =  val.slice(0,100) + " ..."
+      return marked(valued,{ sanitize: true })
+    }
   }
 }
 
@@ -53,7 +82,7 @@ export default {
 
 <style lang="scss">
 h2{
-  color:#42b983;
+  color:teal;
 }
 #show-blog{
   max-width: 800px;
@@ -62,11 +91,10 @@ h2{
 #show-blog input{
   border: 1px solid #ccc; 
   border-radius: 3px; /*css3属性IE不支持*/
-  padding-left:5px; 
   display: block;
-  width:80%;
+  width:95%;
   padding:8px;
-  margin:35px
+  margin:25px
 }
 
 .single-blogs{
@@ -75,14 +103,23 @@ h2{
   padding:20px;
   margin:20px;
   box-sizing:border-box;
-  
+  h2{
+    margin-bottom: 1em;
+  }
 }
 
-.single-blogs a{
+.single-blogs div{
     color:#444;
-    text-decoration: none;
 }
-
-
+.image{
+  width:100%;
+}
+a{
+  color:#ccc;
+  text-decoration:none
+}
+.el-tag{
+  margin-top: 20px;
+}
 </style>
 

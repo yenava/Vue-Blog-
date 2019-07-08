@@ -3,10 +3,20 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store'
 import VueResource from 'vue-resource'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+import './plugins/element.js'
+import { Button, Select,Row,Col } from 'element-ui'
+import Element from 'element-ui'
+import './element-variables.scss'
+
+Vue.use(Element)
 
 Vue.config.productionTip = false
 
-Vue.use(VueResource)
+// 使用插件，需要install的要用Vue.use,像axios就不需要
+Vue.use(VueResource)// 异步加载的库
+Vue.use(mavonEditor) //markdown编辑器插件
 
 // 自定义指令
 Vue.directive('rainbow',{
@@ -16,6 +26,12 @@ Vue.directive('rainbow',{
     el.style.color = "#" + Math.random().toString(16).slice(2,8)
   }
 })
+//注册全局element组件
+Vue.component(Button.name, Button)
+Vue.component(Select.name, Select)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Element)
 
 Vue.directive('theme',{
   bind(el,binding,vnode){
@@ -24,7 +40,6 @@ Vue.directive('theme',{
     }else if(binding.value=='narrow'){
       el.style.maxWidth = "800px";
     }
-
     if (binding.arg=='column'){
       el.style.padding="20px";
     }
@@ -35,9 +50,10 @@ Vue.directive('theme',{
 //   return value.toUpperCase();
 // });
 
-Vue.filter("snippet",function(value){
-  return value.slice(0,100) + " ..."
-});
+// Vue.filter("turnMarkdown",function(value){
+//   var valued =  value.slice(0,100) + " ..."
+//   return marked(valued)
+// });
 
 new Vue({
   router,

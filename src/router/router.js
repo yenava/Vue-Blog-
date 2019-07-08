@@ -5,7 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -26,6 +26,16 @@ export default new Router({
       path:'/singleblog/:id',
       name:'singleblog',
       component:() => import('@/views/SingleBlog.vue')
+    },
+    {
+      path:'/editblog/:id',
+      name:'editblog',
+      component:() =>import('@/views/EditBlog.vue')
+    },
+    {
+      path:'/works',
+      name:'Works',
+      component:()=>import('@/views/Works.vue')
     }
   ]
 })
