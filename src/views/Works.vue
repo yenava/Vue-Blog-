@@ -2,7 +2,7 @@
     <div class="container">
         <el-row>
         <el-col :span="10" :offset="1">
-            <a href="https://yenava.github.io/education-degree/">
+            <a href="works/datanews">
                 <el-card :body-style="{ padding: '0px' }">
                 <img src="@/assets/datanew.png" class="image">
                 <div style="padding: 14px;">
@@ -30,7 +30,7 @@
             </a>
         </el-col>
         <el-col :span="8" :offset="2">
-            <a href="https://yenava.github.io/education-degree/">
+            <a href="https://github.com/yenava/Vue-Blog-/tree/dev">
                 <el-card :body-style="{ padding: '0px' }">
                 <img src="@/assets/logo.png" class="image">
                 <div style="padding: 14px;">
