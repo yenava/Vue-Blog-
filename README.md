@@ -8,6 +8,7 @@
 - 用户注册/登陆
 - 路由懒加载
 - 更新请求为axios方式
+- 更新ui为Element ui
 
 ## 服务端搭建
 - 使用node.js
