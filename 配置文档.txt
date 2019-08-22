@@ -1,45 +1,45 @@
 npm install express-generator -g
-°²×°expressÉú³ÉÆ÷µ½È«¾Ö
-°²×°nodemonµ½È«¾Ö
+å®‰è£…expressç”Ÿæˆå™¨åˆ°å…¨å±€
+å®‰è£…nodemonåˆ°å…¨å±€
 
-Æô¶¯vueÏîÄ¿£ºvue serve
-»òÕßÓÃvue ui Æô¶¯
+å¯åŠ¨vueé¡¹ç›®ï¼švue serve
+æˆ–è€…ç”¨vue ui å¯åŠ¨
 
-ÎªÁËÊµÏÖ×Ô¶¯»¯ÖØÆô£ºÔÚpackage.jsonµÄscriptÖĞ¼ÓÈë
+ä¸ºäº†å®ç°è‡ªåŠ¨åŒ–é‡å¯ï¼šåœ¨package.jsonçš„scriptä¸­åŠ å…¥
 "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www"
   },
 
-¿ªÆômyblog·şÎñÆ÷
+å¼€å¯myblogæœåŠ¡å™¨
 SET DEBUG=myblog:* & npm start
-ÓÃ×Ô¶¯»¯½Å±¾¿ªÆô£º»á×Ô¶¯ÖØÆôĞŞ¸Ä£¬²»ĞèÒªÔİÍ£ÏîÄ¿ºóÔÙÖØÆô
+ç”¨è‡ªåŠ¨åŒ–è„šæœ¬å¼€å¯ï¼šä¼šè‡ªåŠ¨é‡å¯ä¿®æ”¹ï¼Œä¸éœ€è¦æš‚åœé¡¹ç›®åå†é‡å¯
 SET DEBUG=myblog:* & npm run devstart
 
-ÅäÖÃ·şÎñÆ÷¶Ë£ºnginx
-systemctl start nginx  #Æô¶¯
+é…ç½®æœåŠ¡å™¨ç«¯ï¼šnginx
+systemctl start nginx  #å¯åŠ¨
 
 
-systemctl stop nginx #Í£Ö¹
+systemctl stop nginx #åœæ­¢
 
 
-systemctl restart nginx  #ÖØÆô
+systemctl restart nginx  #é‡å¯
 
 
-systemctl status nginx #²é¿´ÔËĞĞ×´Ì¬
+systemctl status nginx #æŸ¥çœ‹è¿è¡ŒçŠ¶æ€
 
 
-systemctl enable nginx #¿ª»úÆô¶¯
+systemctl enable nginx #å¼€æœºå¯åŠ¨
 
 
-nginx -v  #²é¿´nginx°æ±¾ºÅ
+nginx -v  #æŸ¥çœ‹nginxç‰ˆæœ¬å·
 
 
-service nginx reload #ÖØĞÂ¼ÓÔØÅäÖÃÎÄ¼ş
+service nginx reload #é‡æ–°åŠ è½½é…ç½®æ–‡ä»¶
 
 
-vi  /etc/nginx/conf.d/default.conf  #´ò¿ªÅäÖÃÎÄ¼ş
+vi  /etc/nginx/conf.d/default.conf  #æ‰“å¼€é…ç½®æ–‡ä»¶
 
-forever³Ö¾Ã»¯
-cd ÄãµÄÏîÄ¿Â·¾¶
+foreveræŒä¹…åŒ–
+cd ä½ çš„é¡¹ç›®è·¯å¾„
 forever start -a bin/www
