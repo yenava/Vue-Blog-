@@ -20,7 +20,7 @@ function addArticleHandler(req,res,next){
 			var addArticle = new article({
 				articlename: req.body.articlename,
 				content: req.body.content,
-				classify:JSON.parse(Tags),// classify传递过来变成字符串了
+				classify:Tags,// classify传递过来变成字符串了
 				author:req.body.author,
 			})
 			addArticle.save(function(){
