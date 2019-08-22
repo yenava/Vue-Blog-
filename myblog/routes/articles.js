@@ -4,7 +4,7 @@ var router = express.Router();
 
 // 加载控制器
 var article_controller = require('../controllers/articleController');
-var user_controller = require('../controllers/userController');
+
 
 router.post('/add',article_controller.addArticleHandler)
 
